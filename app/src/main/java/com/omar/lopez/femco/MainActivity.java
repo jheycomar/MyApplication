@@ -25,6 +25,8 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     private EditText txtnumero;
     private EditText txtweb;
+    private EditText txtEmail;
+    private ImageButton btnEmail;
     private ImageButton btnphone;
     private ImageButton btnweb;
     private ImageButton btncamera;
@@ -43,11 +45,13 @@ public class MainActivity extends AppCompatActivity {
         btn = (Button) findViewById(R.id.btn1);
         txtnumero = (EditText) findViewById(R.id.txtLlamar);
         txtweb = (EditText) findViewById(R.id.txtNavergar);
+        txtEmail=(EditText) findViewById(R.id.txtEmail);
         btnphone = (ImageButton) findViewById(R.id.btnLlamar);
         btnweb = (ImageButton) findViewById(R.id.btnNavegar);
         btncamera = (ImageButton) findViewById(R.id.btnCamera);
+        btnEmail= (ImageButton) findViewById(R.id.btnEmail);
         fab = (FloatingActionButton) findViewById(R.id.fab);
-
+        // boton de la llamada
         btnphone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                             else {
                                 //a denegado
-                                Toast.makeText(MainActivity.this,"please enable the request permission",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this,"please enable the request permission",Toast.LENGTH_LONG).show();
                                 Intent i=new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                                 i.addCategory(Intent.CATEGORY_DEFAULT);
                                 i.setData(Uri.parse("package:" +getPackageName()));
@@ -112,6 +116,46 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        // boton de la web
+        btnweb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url=txtweb.getText().toString();
+                if (url!=null && !url.isEmpty()){
+                    Intent intentweb=new Intent();
+                    intentweb.setAction(Intent.ACTION_VIEW);
+                    intentweb.setData(Uri.parse("http://"+url));
+                    startActivity(intentweb);
+                }
+            }
+        });
+
+        //boton Email
+        btnEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email=txtEmail.getText().toString();
+                if (email!=null && !email.isEmpty()){
+                    //contactos
+                   Intent intentContact=new Intent(Intent.ACTION_VIEW,Uri.parse("content://contacts/people"));//accede a los contactos
+                    //Email rapido
+                    Intent intentEmailto=new Intent(Intent.ACTION_SENDTO,Uri.parse("mailto:"+email));
+
+                    //Mail Completo
+                    Intent intentEmail=new Intent(Intent.ACTION_VIEW,Uri.parse(email));
+                    intentEmail.setType("plaint/text");
+                    intentEmail.putExtra(Intent.EXTRA_SUBJECT,"Mail's title");
+                    intentEmail.putExtra(Intent.EXTRA_TEXT,"hi there, i love Myform app,but...");
+                    intentEmail.putExtra(Intent.EXTRA_EMAIL,new  String[]{"fernado@gmail.com","jheycomar@gmail.com"});
+                    //TODO:falta continuara
+
+                    startActivity(intentEmail);
+                }
+            }
+        });
+
+
+
         //click navigation to new page
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
