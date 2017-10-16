@@ -3,8 +3,10 @@ package com.omar.lopez.femco;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.audiofx.BassBoost;
 import android.net.Uri;
 import android.os.Build;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -50,16 +52,42 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String phonenumber = txtnumero.getText().toString();
-                if (phonenumber != null) {
+                if (phonenumber != null && !phonenumber.isEmpty()) {
                     //comprovar la vercion de android que estamos corriendo
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        //vercion new android 6 or >
-                        requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, phoneCalCode);
+                      // comprovar si a haceptado, no a haceptado, o nunca sele a preguntado
+                        if (checkPermission( Manifest.permission.CALL_PHONE)){//ha aceptado
+                            Intent i=new Intent(Intent.ACTION_CALL,Uri.parse("tel:"+phonenumber));
+                            if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) { return; }
+                             startActivity(i);
+                        }
+                        else{//no ha aceptado
+                            //a denegado o es la primera vez que se le pregunta
+                            if (!shouldShowRequestPermissionRationale(Manifest.permission.CALL_PHONE)){
+                                //vercion new android 6 or >
+                                requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, phoneCalCode);
+                            }
+                            else {
+                                //a denegado
+                                Toast.makeText(MainActivity.this,"please enable the request permission",Toast.LENGTH_SHORT).show();
+                                Intent i=new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                i.addCategory(Intent.CATEGORY_DEFAULT);
+                                i.setData(Uri.parse("package:" +getPackageName()));
+                                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                                i.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+                                startActivity(i);
+                            }
+
+                        }
 
                     } else {
                         //vercion antigua android
                         OlderVersions(phonenumber);
                     }
+                }
+                else {
+                    Snackbar.make(view, "Please insert a number", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 }
 
             }
@@ -76,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         });
-
+        //click fab button
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
+        //click navigation to new page
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //para generar este metodo escrivir onRequest y tab
+    //este metodo controla la respuesta de los permisos que de el ususario
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
@@ -111,13 +140,7 @@ public class MainActivity extends AppCompatActivity {
                         String phoneNumber = txtnumero.getText().toString();
                         Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phoneNumber));
                         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                            // TODO: Consider calling
-                            //    ActivityCompat#requestPermissions
-                            // here to request the missing permissions, and then overriding
-                            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                            //                                          int[] grantResults)
-                            // to handle the case where the user grants the permission. See the documentation
-                            // for ActivityCompat#requestPermissions for more details.
+
                             return;
                         }
                         startActivity(intent);
@@ -136,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
          }
     }
-
+    // verifica si el usuario a dado permisos ala aplicacion
     private  boolean checkPermission(String permision){
        int resul=this.checkCallingOrSelfPermission(permision);
        return resul== PackageManager.PERMISSION_GRANTED;
