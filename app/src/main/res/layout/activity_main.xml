@@ -85,12 +85,14 @@
         android:id="@+id/btnCamera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="132dp"
+        android:layout_marginTop="36dp"
         app:srcCompat="@android:drawable/ic_menu_camera"
         android:background="@color/colorPrimary"
-        android:layout_below="@+id/txtNavergar"
-        android:layout_alignStart="@+id/txtNavergar"
-        android:layout_alignEnd="@+id/txtNavergar" />
+        android:layout_below="@+id/txtEmail"
+        android:layout_alignStart="@+id/txtEmail"
+        android:layout_alignEnd="@+id/txtEmail" />
+
+
 </RelativeLayout>
 
 
@@ -118,4 +120,6 @@
         android:background="@color/colorPrimary"
         android:text="Go Next"
         android:textColor="#ffff" />
+
+
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package com.omar.lopez.femco;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.audiofx.BassBoost;
@@ -19,10 +20,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
     private EditText txtnumero;
     private EditText txtweb;
     private EditText txtEmail;
@@ -32,7 +35,9 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton btncamera;
     private Button btn;
     private FloatingActionButton fab;
+
     private final int phoneCalCode = 100;
+    private final int pictureFromCamera = 50;
 
     private final String mensage = "hello from the other side";
 
@@ -142,19 +147,31 @@ public class MainActivity extends AppCompatActivity {
                     Intent intentEmailto=new Intent(Intent.ACTION_SENDTO,Uri.parse("mailto:"+email));
 
                     //Mail Completo
-                    Intent intentEmail=new Intent(Intent.ACTION_VIEW,Uri.parse(email));
-                    intentEmail.setType("plaint/text");
-                    intentEmail.putExtra(Intent.EXTRA_SUBJECT,"Mail's title");
-                    intentEmail.putExtra(Intent.EXTRA_TEXT,"hi there, i love Myform app,but...");
-                    intentEmail.putExtra(Intent.EXTRA_EMAIL,new  String[]{"fernado@gmail.com","jheycomar@gmail.com"});
-                    //TODO:falta continuara
+                    Intent intentEmail=new Intent(Intent.ACTION_SEND,Uri.parse(email));//de
+                    //intentEmail.setClassName("com.google.android.gm","com.google.android.gm.ComposeActivityGmail");//para abrir directo con gmail
+                    intentEmail.setType("plaint/text");//tipo texto plano
+                   // intentEmail.setType("message/rfc822");// tipo texto plano
+                    intentEmail.putExtra(Intent.EXTRA_SUBJECT,"Mail's title");//titulo
+                    intentEmail.putExtra(Intent.EXTRA_TEXT,"hi there, i love Myform app,but...");//mensage
+                    intentEmail.putExtra(Intent.EXTRA_EMAIL,new  String[]{"fernado@gmail.com","jheycomar@gmail.com"});//para
+                    startActivity(Intent.createChooser(intentEmail,"Elija cliente de correo"));//con esta linea corre el intent
 
-                    startActivity(intentEmail);
+                    //Telefono 2 sin permisos requeridos
+                    Intent intentphone=new  Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+email));
+                   // startActivity(intentphone);
                 }
             }
         });
 
-
+        btncamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //abrir camara
+                Intent intentCamera=new Intent("android.media.action.IMAGE_CAPTURE");
+               // startActivity(intentCamera);esto solo habre solo la camara
+                startActivityForResult(intentCamera,pictureFromCamera);//abre la camara y espera una captura de imagen
+            }
+        });
 
         //click navigation to new page
         btn.setOnClickListener(new View.OnClickListener() {
@@ -167,6 +184,27 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+    //metodo de la camara result
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        switch ( requestCode){
+
+
+            case pictureFromCamera:
+                if (resultCode== Activity.RESULT_OK){
+                    String result=data.toUri(0);
+
+                    Toast.makeText(this," the image is this"+result,Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(this,"Error not capture image",Toast.LENGTH_LONG).show();
+                }
+                break;
+          default:
+         super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
     //para generar este metodo escrivir onRequest y tab
