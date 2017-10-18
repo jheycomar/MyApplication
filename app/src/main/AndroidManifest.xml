@@ -3,12 +3,13 @@
     package="com.omar.lopez.femco">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
-        android:parentActivityName=".MainFragment"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_logo"
+        android:icon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_logo"
+        android:parentActivityName=".MainFragment"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
@@ -17,11 +18,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-                <!-- esto activa la flecha de volver atras en el segundo activity-->
-        <activity android:name=".SecondActivity" android:parentActivityName=".MainActivity" >
-            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".MainActivity"/>
+        <!-- esto activa la flecha de volver atras en el segundo activity -->
+        <activity
+            android:name=".SecondActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
-
+        <activity android:name=".GridActivity" android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
     </application>
 
 </manifest>

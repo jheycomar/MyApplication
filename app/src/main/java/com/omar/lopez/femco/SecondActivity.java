@@ -41,13 +41,18 @@ public class SecondActivity extends AppCompatActivity {
         nombres.add("Ariel");
         nombres.add("Melissa");
         nombres.add("Wendy");
+        nombres.add("florencio");
+        nombres.add("Ariel");
+        nombres.add("Melissa");
+        nombres.add("Wendy");
 
          //la forma visual enque se va a mostrar
+
       //  ArrayAdapter<String> adaptador=new ArrayAdapter<String>(this ,android.R.layout.simple_list_item_1,nombres);
         //enlazamos nuestro adaptador con nuestro lisView
        // listView.setAdapter(adaptador);
 
-        //tomar los datos del intent
+        //tomar los datos del intent de la primera pagina
         Bundle bundle=getIntent().getExtras();
         if (  bundle!=null && bundle.getString("llave")!=null){
         String respu=  bundle.getString("llave");

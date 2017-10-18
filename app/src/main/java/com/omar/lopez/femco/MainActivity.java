@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton btnphone;
     private ImageButton btnweb;
     private ImageButton btncamera;
+    private  Button btngrid;
     private Button btn;
     private FloatingActionButton fab;
 
@@ -56,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         btncamera = (ImageButton) findViewById(R.id.btnCamera);
         btnEmail= (ImageButton) findViewById(R.id.btnEmail);
         fab = (FloatingActionButton) findViewById(R.id.fab);
+        btngrid= (Button) findViewById(R.id.btngrib);
+
         // boton de la llamada
         btnphone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,6 +122,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
 
+            }
+        });
+
+        //button btngrid
+        btngrid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent=new Intent(MainActivity.this,GridActivity.class);
+                startActivity(intent);
             }
         });
         // boton de la web

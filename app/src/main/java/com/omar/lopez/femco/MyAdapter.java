@@ -44,7 +44,7 @@ public class MyAdapter extends BaseAdapter {
 
             //inflamos la vista que nos a llegado con nuestro layout personalisado
             LayoutInflater layoutInflater=LayoutInflater.from(this.context);
-            convertView=layoutInflater.inflate(R.layout.list_item,null);
+            convertView=layoutInflater.inflate(this.layout,null);
             holder=new ViewHolder();
             //referenciamos al elemento amodificar y lo remplasamos
             holder.nameTextView= (TextView) convertView.findViewById(R.id.nombre);

@@ -4,122 +4,151 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     tools:context="com.omar.lopez.femco.MainActivity">
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:layout_alignParentBottom="true"
-    android:layout_alignParentStart="true"
-    android:layout_marginBottom="21dp">
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical"
+       android:weightSum="1">
+
+       <ScrollView
+           android:layout_width="match_parent"
+           android:layout_height="fill_parent"
+           android:layout_weight="0.90">
+
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent" >
 
 
-    <EditText
-        android:id="@+id/txtLlamar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="35dp"
-        android:ems="10"
-        android:hint="Numero a llamar"
-        android:inputType="phone" />
+               <EditText
+                   android:id="@+id/txtLlamar"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignParentStart="true"
+                   android:layout_alignParentTop="true"
+                   android:layout_marginStart="72dp"
+                   android:layout_marginTop="35dp"
+                   android:ems="10"
+                   android:hint="Numero a llamar"
+                   android:inputType="phone" />
 
-    <ImageButton
-        android:id="@+id/btnLlamar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/txtLlamar"
-        android:layout_marginStart="17dp"
-        android:layout_toEndOf="@+id/txtLlamar"
-        app:srcCompat="@android:drawable/ic_menu_call"
-        android:background="@android:color/transparent"/>
+               <ImageButton
+                   android:id="@+id/btnLlamar"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignBottom="@+id/txtLlamar"
+                   android:layout_marginStart="17dp"
+                   android:layout_toEndOf="@+id/txtLlamar"
+                   android:background="@android:color/transparent"
+                   app:srcCompat="@android:drawable/ic_menu_call" />
 
-    <EditText
-        android:id="@+id/txtNavergar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/btnNavegar"
-        android:layout_toStartOf="@+id/btnLlamar"
-        android:ems="10"
-        android:hint="Url"
-        android:inputType="textPersonName" />
+               <EditText
+                   android:id="@+id/txtNavergar"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignTop="@+id/btnNavegar"
+                   android:layout_toStartOf="@+id/btnLlamar"
+                   android:ems="10"
+                   android:hint="Url"
+                   android:inputType="textPersonName" />
 
-    <ImageButton
-        android:id="@+id/btnNavegar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/btnLlamar"
-        android:layout_below="@+id/btnLlamar"
-        android:layout_marginTop="14dp"
-        app:srcCompat="@android:drawable/ic_menu_view"
-        android:background="@android:color/transparent"/>
+               <ImageButton
+                   android:id="@+id/btnNavegar"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignStart="@+id/btnLlamar"
+                   android:layout_below="@+id/btnLlamar"
+                   android:layout_marginTop="14dp"
+                   android:background="@android:color/transparent"
+                   app:srcCompat="@android:drawable/ic_menu_view" />
 
-    <EditText
-        android:id="@+id/txtEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Email"
-        android:layout_below="@+id/txtNavergar"
-        android:layout_alignStart="@+id/txtNavergar" />
+               <EditText
+                   android:id="@+id/txtEmail"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignStart="@+id/txtNavergar"
+                   android:layout_below="@+id/txtNavergar"
+                   android:layout_marginTop="22dp"
+                   android:ems="10"
+                   android:hint="Email"
+                   android:inputType="textPersonName" />
 
-    <ImageButton
-        android:id="@+id/btnEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/btnNavegar"
-        android:layout_alignTop="@+id/txtEmail"
-        android:background="@android:color/transparent"
-        app:srcCompat="@android:drawable/sym_action_email" />
+               <ImageButton
+                   android:id="@+id/btnEmail"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignStart="@+id/btnNavegar"
+                   android:layout_alignTop="@+id/txtEmail"
+                   android:background="@android:color/transparent"
+                   app:srcCompat="@android:drawable/sym_action_email" />
 
-    <ImageButton
-        android:id="@+id/btnCamera"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        app:srcCompat="@android:drawable/ic_menu_camera"
-        android:background="@color/colorPrimary"
-        android:layout_below="@+id/txtEmail"
-        android:layout_alignStart="@+id/txtEmail"
-        android:layout_alignEnd="@+id/txtEmail" />
+               <ImageButton
+                   android:id="@+id/btnCamera"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignEnd="@+id/txtEmail"
+                   android:layout_alignStart="@+id/txtEmail"
+                   android:layout_below="@+id/txtEmail"
+                   android:layout_marginTop="36dp"
+                   android:background="@color/colorPrimary"
+                   app:srcCompat="@android:drawable/ic_menu_camera" />
 
+               <Button
+                   android:id="@+id/btngrib"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignEnd="@+id/btnCamera"
+                   android:layout_alignStart="@+id/btnCamera"
+                   android:layout_below="@+id/btnCamera"
+                   android:layout_marginTop="27dp"
+                   android:background="@color/colorPrimary"
+                   android:text="Go Next Grid"
+                   android:textColor="#ffff"
+                   app:srcCompat="@android:drawable/ic_menu_camera" />
 
-</RelativeLayout>
+           </RelativeLayout>
+
+       </ScrollView>
+
+       <LinearLayout
+           android:id="@+id/linearLayout"
+           android:layout_width="match_parent"
+           android:layout_height="50dp"
+           android:orientation="horizontal"
+           android:weightSum="1"
+           android:background="#ffff"
+         >
+
+           <Button
+               android:id="@+id/btn1"
+               android:layout_width="64dp"
+               android:layout_height="wrap_content"
+               android:layout_alignParentBottom="true"
+               android:layout_alignParentLeft="true"
+               android:layout_alignParentStart="true"
+               android:background="@color/colorPrimary"
+               android:text="Go Next List"
+               android:textColor="#ffff"
+               android:layout_weight="0.05"
+               android:layout_margin="2dp"/>
+       </LinearLayout>
+
+   </LinearLayout>
+
 
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btn1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="9dp"
-        android:layout_marginEnd="22dp"
         android:clickable="true"
-        app:srcCompat="@android:drawable/ic_input_add" />
-
-
-
-
-    <Button
-        android:id="@+id/btn1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:background="@color/colorPrimary"
-        android:text="Go Next"
-        android:textColor="#ffff" />
-
-
+        android:foregroundGravity="bottom|right"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        app:srcCompat="@android:drawable/ic_input_add" />
 </RelativeLayout>
