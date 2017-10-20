@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton btncamera;
     private  Button btngrid;
     private Button btn;
+    private Button btncarview;
     private FloatingActionButton fab;
 
     private final int phoneCalCode = 100;
@@ -58,7 +59,16 @@ public class MainActivity extends AppCompatActivity {
         btnEmail= (ImageButton) findViewById(R.id.btnEmail);
         fab = (FloatingActionButton) findViewById(R.id.fab);
         btngrid= (Button) findViewById(R.id.btngrib);
+        btncarview=(Button)findViewById(R.id.btncardView);
 
+       //click btncardview
+        btncarview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this, cardview.class);
+                startActivity(intent);
+            }
+        });
         // boton de la llamada
         btnphone.setOnClickListener(new View.OnClickListener() {
             @Override

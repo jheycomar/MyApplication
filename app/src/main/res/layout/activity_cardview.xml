@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp">
+
+
+    <android.support.v7.widget.CardView  xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        card_view:cardBackgroundColor="#E2E2E2E2"
+        card_view:cardCornerRadius="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <ImageView  android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                     android:background="@drawable/ecommerce"  >
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/info_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="Ecommerce"
+            android:textSize="25dp"
+            android:textColor="@color/colorPrimary"/>
+
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>
