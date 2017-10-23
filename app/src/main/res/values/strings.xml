@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GuideApp</string>
+    <string name="send_to">Send</string>
+
 </resources>

@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private final int phoneCalCode = 100;
     private final int pictureFromCamera = 50;
 
+    private Button btnreciclerview;
     private final String mensage = "hello from the other side";
 
     @Override
@@ -60,7 +61,16 @@ public class MainActivity extends AppCompatActivity {
         fab = (FloatingActionButton) findViewById(R.id.fab);
         btngrid= (Button) findViewById(R.id.btngrib);
         btncarview=(Button)findViewById(R.id.btncardView);
+        btnreciclerview=(Button)findViewById(R.id.btnreciclerview);
 
+
+        btnreciclerview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this, HorizontalListActivity.class);
+                startActivity(intent);
+            }
+        });
        //click btncardview
         btncarview.setOnClickListener(new View.OnClickListener() {
             @Override
