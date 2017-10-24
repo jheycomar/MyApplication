@@ -3,6 +3,7 @@
     package="com.omar.lopez.femco">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -41,7 +42,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".HorizontalListActivity"></activity>
+        <activity android:name=".HorizontalListActivity" />
+        <activity android:name=".YoutubeActivity"></activity>
     </application>
 
 </manifest>

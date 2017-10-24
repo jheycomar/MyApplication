@@ -37,13 +37,17 @@ public class MainActivity extends AppCompatActivity {
     private Button btn;
     private Button btncarview;
     private FloatingActionButton fab;
-
+    private Button btnyoutube;
     private final int phoneCalCode = 100;
     private final int pictureFromCamera = 50;
 
     private Button btnreciclerview;
     private final String mensage = "hello from the other side";
 
+
+    static  final String youtube_api_key="AIzaSyAOmOErfJDyZIm7wJUoytc8OUOqen5i_L0";
+    static  final String youtube_video_id="JPXbOZiASyo";
+    static  final String youtube_play_list="PLuEZQoW9bRnT5LUI1rQFwu9ujQVIVQTF3";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,8 +66,14 @@ public class MainActivity extends AppCompatActivity {
         btngrid= (Button) findViewById(R.id.btngrib);
         btncarview=(Button)findViewById(R.id.btncardView);
         btnreciclerview=(Button)findViewById(R.id.btnreciclerview);
+       btnyoutube=(Button)findViewById(R.id.btnyoutube);
 
+        btnyoutube.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+            }
+        });
         btnreciclerview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,7 +151,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-
+                Intent intent=new Intent(MainActivity.this,YoutubeActivity.class);
+                startActivity(intent);
             }
         });
 
