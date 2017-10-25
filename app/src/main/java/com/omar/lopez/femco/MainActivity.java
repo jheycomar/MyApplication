@@ -11,6 +11,7 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText txtnumero;
     private EditText txtweb;
-    private EditText txtEmail;
+    private TextInputEditText txtEmail;
     private ImageButton btnEmail;
     private ImageButton btnphone;
     private ImageButton btnweb;
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         btn = (Button) findViewById(R.id.btn1);
         txtnumero = (EditText) findViewById(R.id.txtLlamar);
         txtweb = (EditText) findViewById(R.id.txtNavergar);
-        txtEmail=(EditText) findViewById(R.id.txtEmail);
+        txtEmail=(TextInputEditText) findViewById(R.id.txtEmail);
         btnphone = (ImageButton) findViewById(R.id.btnLlamar);
         btnweb = (ImageButton) findViewById(R.id.btnNavegar);
         btncamera = (ImageButton) findViewById(R.id.btnCamera);

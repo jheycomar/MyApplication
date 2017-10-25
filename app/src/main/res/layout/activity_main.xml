@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     tools:context="com.omar.lopez.femco.MainActivity">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
 
    <LinearLayout
        android:layout_width="match_parent"
@@ -13,44 +17,47 @@
        android:orientation="vertical"
        android:weightSum="1">
 
-       <ScrollView
+       <LinearLayout
            android:layout_width="match_parent"
-           android:layout_height="fill_parent"
-           android:layout_weight="0.90">
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:weightSum="1">
 
-           <RelativeLayout
-               android:layout_width="match_parent"
-               android:layout_height="match_parent" >
+           <EditText
+               android:id="@+id/txtLlamar"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="50dp"
+               android:layout_marginTop="20dp"
+               android:ems="10"
+               android:hint="Numero a llamar"
+               android:inputType="phone" />
 
+           <ImageButton
+               android:id="@+id/btnLlamar"
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent"
+               android:layout_gravity="center"
+               android:layout_marginStart="5dp"
+               android:layout_weight="0.19"
+               android:background="@android:color/transparent"
+               app:srcCompat="@android:drawable/ic_menu_call" />
 
-               <EditText
-                   android:id="@+id/txtLlamar"
-                   android:layout_width="wrap_content"
+       </LinearLayout>
+
+       <LinearLayout
+                   android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:layout_alignParentStart="true"
-                   android:layout_alignParentTop="true"
-                   android:layout_marginStart="72dp"
-                   android:layout_marginTop="35dp"
-                   android:ems="10"
-                   android:hint="Numero a llamar"
-                   android:inputType="phone" />
+                   android:weightSum="1">
 
-               <ImageButton
-                   android:id="@+id/btnLlamar"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_alignBottom="@+id/txtLlamar"
-                   android:layout_marginStart="17dp"
-                   android:layout_toEndOf="@+id/txtLlamar"
-                   android:background="@android:color/transparent"
-                   app:srcCompat="@android:drawable/ic_menu_call" />
+
 
                <EditText
                    android:id="@+id/txtNavergar"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:layout_alignTop="@+id/btnNavegar"
-                   android:layout_toStartOf="@+id/btnLlamar"
+                   android:layout_marginStart="50dp"
+                   android:layout_marginTop="20dp"
                    android:ems="10"
                    android:hint="Url"
                    android:inputType="textPersonName" />
@@ -58,56 +65,77 @@
                <ImageButton
                    android:id="@+id/btnNavegar"
                    android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_alignStart="@+id/btnLlamar"
+                   android:layout_height="match_parent"
                    android:layout_below="@+id/btnLlamar"
-                   android:layout_marginTop="14dp"
+                   android:layout_marginStart="5dp"
                    android:background="@android:color/transparent"
-                   app:srcCompat="@android:drawable/ic_menu_view" />
+                   app:srcCompat="@android:drawable/ic_menu_view"
+                   android:layout_weight="0.19" />
 
-               <EditText
-                   android:id="@+id/txtEmail"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_alignStart="@+id/txtNavergar"
-                   android:layout_below="@+id/txtNavergar"
-                   android:layout_marginTop="22dp"
-                   android:ems="10"
-                   android:hint="Email"
-                   android:inputType="textPersonName" />
+               </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="1">
 
-               <ImageButton
-                   android:id="@+id/btnEmail"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_alignStart="@+id/btnNavegar"
-                   android:layout_alignTop="@+id/txtEmail"
-                   android:background="@android:color/transparent"
-                   app:srcCompat="@android:drawable/sym_action_email" />
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/txtEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="50dp"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textPersonName"
+            android:layout_below="@+id/txtNavergar"
+            android:layout_alignLeft="@+id/txtNavergar"
+            android:layout_alignStart="@+id/txtNavergar" />
+    </android.support.design.widget.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/btnEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        app:srcCompat="@android:drawable/sym_action_email"
+        android:layout_weight="0.19" />
+
+</LinearLayout>
+
+
 
                <ImageButton
                    android:id="@+id/btnCamera"
-                   android:layout_width="wrap_content"
+                   android:layout_width="72dp"
                    android:layout_height="wrap_content"
-                   android:layout_alignEnd="@+id/txtEmail"
-                   android:layout_alignStart="@+id/txtEmail"
                    android:layout_below="@+id/txtEmail"
+                   android:layout_gravity="center"
                    android:layout_marginTop="36dp"
                    android:background="@color/colorPrimary"
-                   app:srcCompat="@android:drawable/ic_menu_camera" />
+                   app:srcCompat="@android:drawable/ic_menu_camera"
+                   android:layout_weight="0.06" />
 
-                    <Button
+               <Button
                         android:id="@+id/btnyoutube"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Youtube"
+                         android:layout_gravity="center"
                         android:layout_below="@+id/btnCamera"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="20dp" />
 
-           </RelativeLayout>
 
-       </ScrollView>
+
+
+
 
        <LinearLayout
            android:id="@+id/linearLayout"
@@ -172,7 +200,7 @@
        </LinearLayout>
 
    </LinearLayout>
-
+</ScrollView>
 
 
     <android.support.design.widget.FloatingActionButton
