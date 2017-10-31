@@ -39,6 +39,7 @@ public class MyAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
         //View Holder pattern (patron View Holder)
+
        ViewHolder holder;
         if (convertView==null){
 
